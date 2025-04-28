@@ -1,0 +1,168 @@
+.title{
+    font-size: 50px; 
+    color: white;     
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.counter {
+    display: flex;
+    width: 100%;
+    max-width: 850px;
+    margin: 10px 20px;
+    font-size: 30px;
+    color: whitesmoke;
+    gap: 20px;
+}
+
+.counter div {
+    flex: 1;
+    text-align: center;
+}
+
+body{
+    background-color: rgb(1, 1, 139);
+    display: flex;
+    flex-direction: column; 
+    align-items: center;     
+    padding-top: 30px;       
+    justify-content: center;
+}  
+.control{
+    background-color: white;
+    width: 300px;
+    padding: 30px;
+    margin-top: 50px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+.input{
+    display: flex;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.text{
+    font-size: 20px;
+    flex-grow: 1;
+    border: none;
+    color: white;
+    background-color: rgb(0, 0, 94);
+    padding: 10px 10px;
+    outline: none;
+}
+.button{
+    background-color: rgb(2, 0, 129);
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    cursor:pointer;
+    font-size: 30px;
+    opacity: 0.5;
+    text-align: left;
+    padding-left: 10px;
+}
+.button:hover{
+    opacity: 1;
+}
+.list{
+    font-size: 20px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;  
+}
+.list li{
+    display: flex;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+.list label{
+    flex-grow: 1;
+}
+.trashcan{
+    background: none;
+    border: none;
+    cursor: pointer;
+    opacity: 0.5;
+}
+.trashcan:hover{
+    opacity: 1;
+}
+
+/* anime */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
+
+
+.fade-in {
+    animation: fadeIn 0.3s ease forwards;
+}
+
+
+.fade-out {
+    animation: fadeOut 0.3s ease forwards;
+}
+
+@media(max-width:775px){
+    .counter {
+        flex-direction: column; 
+        align-items: center;
+    }
+}
+@media(max-width:500px){
+    .title{
+        font-size: 30px; 
+    }
+    .counter {
+        flex-direction: column; 
+        align-items: center;
+    }
+    .counter div {
+        font-size: 18px; 
+    }
+    .input{
+        width: 270px;
+        height: 40px;
+        margin-left: 12px;
+    }
+    .list {
+        flex-wrap: wrap; 
+    }
+    .list li {
+        width: 90%; 
+        font-size: 18px;
+    }
+    .control{
+        width: 300px;
+        padding: 20px;
+        margin-top: 10px;
+    }
+    .text{
+        font-size: 18px;
+        padding: 5px 10px;
+    }
+    .button{
+        font-size: 25px;
+        padding-top: 6px;
+        padding-left: 7px;
+    }
+}
