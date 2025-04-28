@@ -88,7 +88,7 @@ body {
 .modify_input {
     flex-grow: 1;
     display: flex;
-    /* align-items: center; */
+    align-items: center;
     width: 100%;
     overflow: hidden;
     gap: 10px;
@@ -188,7 +188,7 @@ body {
     .counter div {
         font-size: 18px; 
     }
-    .input{
+    .input, .modify_input{
         margin-left: 12px;
     }
     .list {
@@ -203,13 +203,13 @@ body {
         padding: 20px;
         margin-top: 10px;
     }
-    .text{
+    .text, .modify_text{
         font-size: 18px;
         padding: 5px 10px;
     }
-    .button{
+    .button, .modify_ok_button{
         font-size: 25px;
-        padding-top: 6px;
-        padding-left: 7px;
+        padding-top: 10px;
+        padding-left: 15px;
     }
 } 
