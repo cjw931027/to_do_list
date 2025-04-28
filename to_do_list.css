@@ -54,7 +54,6 @@ body {
 .input, .modify_input{
     gap: 10px;
     display: flex;
-    margin-bottom: 20px;
     border-radius: 12px;
     overflow: hidden;
     background-color: #f0f4f8;
@@ -188,9 +187,6 @@ body {
     .counter div {
         font-size: 18px; 
     }
-    .input, .modify_input{
-        margin-left: 12px;
-    }
     .list {
         flex-wrap: wrap; 
     }
@@ -199,17 +195,20 @@ body {
         font-size: 18px;
     }
     .control{
-        
         padding: 20px;
         margin-top: 10px;
     }
     .text, .modify_text{
-        font-size: 18px;
-        padding: 5px 10px;
+        font-size: 15px;
+        padding: 0 10px;
     }
     .button, .modify_ok_button{
-        font-size: 25px;
-        padding-top: 10px;
-        padding-left: 15px;
+        font-size: 18px;
+        padding: 0 10px;
+    }
+    .modify_ok_button{
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
     }
 } 
