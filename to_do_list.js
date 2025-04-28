@@ -180,5 +180,13 @@ text.addEventListener("keyup", function(e){
     }
 });
 
+const reset = document.querySelector(".reset");
+reset.addEventListener("click", function() {
+    if (confirm("確定要清除所有清單嗎？這個動作無法復原！")) {
+        localStorage.clear();
+        location.reload();
+    }
+});
+
 // Load tasks when the page loads
 document.addEventListener("DOMContentLoaded", loadTasks);
