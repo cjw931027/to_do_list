@@ -88,8 +88,8 @@ body {
 .modify_input {
     flex-grow: 1;
     display: flex;
-    align-items: center;
-    /* width: 100%; */
+    /* align-items: center; */
+    width: 100%;
     overflow: hidden;
     gap: 10px;
 }
