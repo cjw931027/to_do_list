@@ -200,11 +200,11 @@ body {
     }
     .text, .modify_text{
         font-size: 15px;
-        padding: 0 10px;
+        padding: 10px 10px;
     }
     .button, .modify_ok_button{
         font-size: 18px;
-        padding: 0 10px;
+        padding: 5px 10px;
     }
     .modify_ok_button{
         max-width: 100%;
