@@ -59,7 +59,7 @@ body {
     background-color: #f0f4f8;
 }
 
-.text {
+.text, .modify_text {
     flex-grow: 1;
     border: none;
     padding: 12px;
@@ -68,7 +68,7 @@ body {
     background-color: transparent;
 }
 
-.button {
+.button, .modify_ok_button{
     background-color: #3B5998;
     color: white;
     border: none;
@@ -102,14 +102,14 @@ body {
     flex-grow: 1;
 }
 
-.trashcan {
+.trashcan,.modify {
     background: none;
     border: none;
     cursor: pointer;
     opacity: 0.7;
 }
 
-.trashcan:hover {
+.trashcan,.modify:hover {
     opacity: 1;
 }
 

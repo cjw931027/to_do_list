@@ -122,6 +122,7 @@ function new_task(){
     task_element.innerHTML = `
         <input type="checkbox" class="checkbox">
         <label>${text.value}</label>
+        <button class="modify">✏️</button>
         <button class="trashcan">🗑️</button>
     `;
 
@@ -165,6 +166,43 @@ function new_task(){
         });
     });
 
+    //modify task
+    const modify = task_element.querySelector(".modify");
+    modify.addEventListener("click", function () {
+        //store old text
+        const old_text = task_element.querySelector("label").innerText;
+
+        task_element.innerHTML = `
+            <div class="input">
+                 <input class="modify_text" value="${old_text}">
+                <button class="modify_ok_button">✔️</button>
+            </div>
+        `;
+        const modify_ok_button = task_element.querySelector(".modify_ok_button");
+        modify_ok_button.addEventListener("click",function(){
+            const newText = task_element.querySelector(".modify_text").value;
+
+            //update the screen
+            task_element.innerHTML = `
+                <input type="checkbox" class="checkbox" ${tasks.find(t => t.text === old_text).completed ? "checked" : ""}>
+                <label>${newText}</label>
+                <button class="modify">✏️</button>
+                <button class="trashcan">🗑️</button>
+            `;
+
+            //update array tasks
+            const task_object = tasks.find(t => t.text === old_text);
+            if (task_object) {
+                task_object.text = newText;
+            }
+
+            update_task_count(); //store to localStorage
+
+            // 重新綁定修改、刪除、checkbox事件
+            bind_task_event(task_element, task_object);
+        });
+    });
+
     list.append(task_element);
 
     text.value = "";
@@ -173,9 +211,9 @@ function new_task(){
 
 button.addEventListener("click",new_task);
 
+
 text.addEventListener("keyup", function(e){
     if(e.key == "Enter"){
-        console.log(text.value);
         new_task();
     }
 });
@@ -187,6 +225,77 @@ reset.addEventListener("click", function() {
         location.reload();
     }
 });
+
+function bind_task_event(task_element, task_object) {
+    const checkbox = task_element.querySelector(".checkbox");
+    const modify = task_element.querySelector(".modify");
+    const trashcan = task_element.querySelector(".trashcan");
+
+    if (task_object.completed) {
+        task_element.style.textDecoration = "line-through";
+        task_element.style.color = "#999";
+        checkbox.checked = true;
+    }
+
+    checkbox.addEventListener("change", function () {
+        task_object.completed = checkbox.checked;
+        if (checkbox.checked) {
+            complete++;
+            remain--;
+            task_element.style.textDecoration = "line-through";
+            task_element.style.color = "#999";
+        } else {
+            complete--;
+            remain++;
+            task_element.style.textDecoration = "none";
+            task_element.style.color = "";
+        }
+        update_task_count();
+    });
+
+    modify.addEventListener("click", function() {
+        const old_text = task_element.querySelector("label").innerText;
+        
+        task_element.innerHTML = `
+            <div class="input">
+                <input class="modify_text" value="${old_text}">
+                <button class="modify_ok_button">✔️</button>
+            </div>
+        `;
+
+        const modify_ok_button = task_element.querySelector(".modify_ok_button");
+        modify_ok_button.addEventListener("click", function(){
+            const newText = task_element.querySelector(".modify_text").value;
+
+            task_object.text = newText; // 更新記錄
+            task_element.innerHTML = `
+                <input type="checkbox" class="checkbox" ${task_object.completed ? "checked" : ""}>
+                <label>${newText}</label>
+                <button class="modify">✏️</button>
+                <button class="trashcan">🗑️</button>
+            `;
+            update_task_count();
+            bind_task_event(task_element, task_object); // 重新綁定所有行為！
+        });
+    });
+
+    trashcan.addEventListener("click", function() {
+        trashcan.disabled = true;
+        total--;
+        if (checkbox.checked) {
+            complete--;
+        } else {
+            remain--;
+        }
+        update_task_count();
+        task_element.classList.add("fade-out");
+        task_element.addEventListener("animationend", function () {
+            tasks = tasks.filter(t => t.text !== task_object.text);
+            update_task_count();
+            task_element.remove();
+        }, { once: true });
+    });
+}
 
 // Load tasks when the page loads
 document.addEventListener("DOMContentLoaded", loadTasks);
