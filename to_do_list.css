@@ -51,7 +51,8 @@ body {
     background-color: #ff4c4c;
 }
 
-.input {
+.input, .modify_input{
+    gap: 10px;
     display: flex;
     margin-bottom: 20px;
     border-radius: 12px;
@@ -66,6 +67,7 @@ body {
     font-size: 18px;
     outline: none;
     background-color: transparent;
+    border-radius: 20px;
 }
 
 .button, .modify_ok_button{
@@ -76,10 +78,31 @@ body {
     font-size: 24px;
     cursor: pointer;
     transition: background-color 0.3s;
+    border-radius: 20px;
 }
 
-.button:hover {
+.button:hover, .modify_ok_button:hover {
     background-color: #6D9AC4;
+}
+
+.modify_input {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    /* width: 100%; */
+    overflow: hidden;
+    gap: 10px;
+}
+
+.move-up, .move-down {
+    background: none;
+    border: none;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.move-up:hover, .move-down:hover {
+    opacity: 1;
 }
 
 .list {
@@ -109,7 +132,7 @@ body {
     opacity: 0.7;
 }
 
-.trashcan,.modify:hover {
+.trashcan:hover,.modify:hover {
     opacity: 1;
 }
 
