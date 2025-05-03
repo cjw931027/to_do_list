@@ -91,11 +91,13 @@ function bind_task_event(task_element, task_object) {
             remain--;
             task_element.style.textDecoration = "line-through";
             task_element.style.color = "#999";
+            modify.disabled = true;
         } else {
             complete--;
             remain++;
             task_element.style.textDecoration = "none";
             task_element.style.color = "";
+            modify.disabled = false;
         }
         update_task_count();
     });
